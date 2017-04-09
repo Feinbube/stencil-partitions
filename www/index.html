@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Stencil Partitions</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        
+        <link href="css/stylesheet.css" rel="stylesheet" type="text/css">
+
+        <!-- Libraries #################################################### -->
+
+        <script src="lib/jquery-3.0.0.min.js"></script>
+        <script src="lib/phaser-2.6.1.min.js"></script>
+        <script src="lib/seedrandom-2.4.2.min.js"></script>
+        <script src="lib/noise.js"></script>
+        <script src="lib/jspdf-1.3.2.min.js"></script>
+
+        <!-- Source Code ################################################## -->
+
+        <!-- Helpers -->
+        <script src="src/helpers/utility.js"></script>
+        <script src="src/helpers/phaser-utility.js"></script>
+        <script src="src/helpers/noise-helper.js"></script>
+        
+        <!-- Partitioning -->
+        <script src="src/partitioning/partitioning.js"></script>
+        <script src="src/partitioning/partitioning-with-graphics.js"></script>
+        <script src="src/partitioning/partitioning-with-tkiz.js"></script>
+        <script src="src/partitioning/partitioning-with-pdf.js"></script>
+        <script src="src/partitioning/partitioning-diagram.js"></script>
+
+        <!-- Partitioning/Four -->
+        <script src="src/partitioning/four/squares-4.js"></script>
+        <script src="src/partitioning/four/rows-4.js"></script>
+        <script src="src/partitioning/four/triangles-4.js"></script>
+        <script src="src/partitioning/four/optimized-4.js"></script>
+        <script src="src/partitioning/four/optimal-4.js"></script>
+        <script src="src/partitioning/four/merged8diamonds-4.js"></script>
+        
+        <!-- Partitioning/Eight -->
+        <script src="src/partitioning/eight/rectangles-8.js"></script>
+        <script src="src/partitioning/eight/rows-8.js"></script>
+        <script src="src/partitioning/eight/diamonds-8.js"></script>
+        <script src="src/partitioning/eight/diamonds-five-8.js"></script>
+        <script src="src/partitioning/eight/diamonds-also-8.js"></script>
+        
+        <!-- Tests -->
+        <script src="src/test/test.js"></script>
+        <script src="src/test/utility.js"></script>
+
+        <!-- Simulation -->
+        <script src="src/viewconfig.js"></script>
+        <script src="src/controller.js"></script>
+        <script src="src/simulator.js"></script>
+    </head>
+    <body>
+        <p>
+            Processors:
+            <select id="processorSelect">
+              <option value="p4">Four</option>
+              <option value="p8" selected>Eight</option>
+            </select>            
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Width:
+            <input id="widthInput" type="text" name="width" value="30" size="3" />
+            <select id="widthSelect">
+              <option value="8">8</option>
+              <option value="10">10</option>
+              <option value="16">16</option>
+              <option value="20">20</option>
+              <option value="30" selected>30</option>
+              <option value="32">32</option>
+              <option value="100">100</option>
+            </select>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Pixels:
+            <input id="pixelInput" type="text" name="pixels" value="300" size="3" />
+            <select id="pixelSelect">
+              <option value="100">100</option>
+              <option value="200">200</option>
+              <option value="300" selected>300</option>
+            </select>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Lines:
+            <input id="linesNone" type="radio" name="lines" value="none" /><label for="linesNone">None</label>
+            <input id="linesConceptual" type="radio" name="lines" value="conceptual" /><label for="linesConceptual">Conceptual</label>
+            <input id="linesAccess" type="radio" name="lines" value="access" checked/><label for="linesAccess">Access</label>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input id="showCells" type="checkbox" name="showCells" value="showCells" checked/><label for="showCells">Show cells</label>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input id="showAccess" type="checkbox" name="showAccess" value="showAccess"/><label for="showAccess">Show accesses</label>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input id="showDiagram" type="checkbox" name="showDiagram" value="showDiagram"/><label for="showDiagram">Show diagram</label>
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            Counts:
+            <select id="countsSelect">
+              <option value="none">None</option>
+              <option value="cellsPerProcessor" selected>Cells per processor</option>
+              <option value="uncachedOverheadPerProcessor">Uncached overhead</option>
+              <option value="cachedOverheadPerProcessor">Cached overhead</option>
+              <option value="efficiency">Accesses to cells ratio</option>
+            </select> 
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+
+            <button id="buttonGo">Go</button>
+            <input id="instantGo" type="checkbox" name="instantGo" value="instantGo" checked/><label for="instantGo">Instant</label>
+        </p>
+
+        <p>
+            <div id="screen"></div>
+        </p>
+
+        <!-- The Modal -->
+        <div id="theModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content" id="modal-text">
+                <p>Some text in the Modal..</p>
+          </div>
+        </div>
+    </body>
+</html>
